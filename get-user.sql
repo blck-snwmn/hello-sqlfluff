@@ -1,4 +1,4 @@
 select
     id,
-    name
+    name,
 from users

@@ -1,0 +1,25 @@
+name: lint & format
+
+on:
+  push:
+  pull_request:
+
+jobs:
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-python@v4
+            - name: install sqlfluff
+              run: pip install sqlfluff
+            - name: lint
+              run: sqlfluff lint . --dialect snowflake
+    format:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-python@v4
+            - name: install sqlfluff
+              run: pip install sqlfluff
+            - name: lint
+              run: sqlfluff format . --dialect snowflake
